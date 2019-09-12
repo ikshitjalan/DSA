@@ -50,48 +50,57 @@ void Split(Node* node,Node** head1,Node** head2){
             Node* temp1 = (node);
             (*head1) = temp1;
             Node* temp3 = (*head1);
+            
             for(int i=1;i<count/2;i++){
                 
                 temp1 = temp1->next;
                 temp3->next = temp1;
+                temp3 = temp3->next;
+                
                 
             }
-            (temp3->next)->next = (*head1);
+            Node* temp2= (temp3)->next;
             
+            (temp3)->next = (*head1);
             
-            cout<<(temp1->next)->data;
-            Node* temp2 = temp1->next;
-            cout<<temp2->data;
             (*head2) = temp2;
             Node* temp4 = (*head2);
-            for(int i=count/2;i<=count;i++){
+            for(int i=count/2;i<(count-1);i++){
                 
                 temp2 = temp2->next;
                 temp4->next=temp2;
+                temp4 = temp4->next;
 
             }
-            (temp4->next)->next = (*head2);
+            (temp4)->next = (*head2);
             
         }else{
             Node* temp1 = (node);
             (*head1) = temp1;
-            for(int i=1;i<ceil(count/2);i++){
-                
+            Node* temp3 = (*head1);
+            
+            for(int i=1;i<(ceil(count/2));i++){
+                // cout<<" "<<i<<endl;
                 temp1 = temp1->next;
-
+                temp3->next = temp1;
+                temp3 = temp3->next;   
             }
-            temp1->next = (*head1);
-            (*head1) = temp1;
-            Node* temp2 = (node);
+
+            Node* temp2= (temp3)->next;
+            
+            (temp3)->next = (*head1);
+            
             (*head2) = temp2;
-            for(int i=count/2;i<count;i++){
+            
+            Node* temp4 = (*head2);
+            for(int i=((ceil(count/2))+1);i<(count);i++){
                 
                 temp2 = temp2->next;
+                temp4->next=temp2;
+                temp4 = temp4->next;
 
             }
-            temp2->next = (*head2);
-            (*head2) = temp2;
-
+            (temp4)->next = (*head2);
         }
         
     }
@@ -115,8 +124,12 @@ int main(){
     
     push(&head, 12);  
     push(&head, 56);  
-    push(&head, 2);  
-    push(&head, 11);  
+    push(&head, 5); 
+    push(&head, 6);  
+    push(&head, 7);   
+    push(&head, 8);   
+    
+    
       
     cout << "Original Circular Linked List";  
     printList(head);      
