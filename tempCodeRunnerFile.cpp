@@ -1,2 +1,3 @@
-push(&head,34);
-    push(&head,89);
+
+	if (root == NULL) 
+	    return root; 
