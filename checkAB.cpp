@@ -1,54 +1,43 @@
 #include<iostream>
 using namespace std;
 
-bool checkAB(char input[],int start,int end){
-    if((start+1)=='\0'||start=='\0'){
-       return true; 
+bool checkAB(char input[]) {
+	// Write your code here
+    if(input[0]=='\0'){
+        return true;
     }
-    
-    
-    if(input[start]=='a'){
-        if(input[start+1]=='a'||input[start+1]=='b'||input[start+1]=='\0'){
-            cout<<"here1"<<endl;
-            return checkAB(input,start+2,end);;
-
+    int count;
+    if(input[0]=='a'){
+        count=0;
+        if(input[1]=='a'){
+            count++;
+            return checkAB(input+2);
+        }else if((input[1]=='b')){
+            count++;
+            if(input[2]=='b'&&(input[3]=='a'||input[3]=='\0')){
+                
+                return checkAB(input+4);
             }else{
-            return false;
-        }
-    }
-    else if(input[start]=='b'||input[start-1]=='b'){
-        if(input[start+1]=='a'||input[start+1]=='\0'){
-            cout<<"here1"<<endl;
-            return checkAB(input,start+2,end);;
+                return false;
+            }
+        }else if(input[1]=='\0'){
+            return true;
         }else{
             return false;
-        }
-    }
-    else if(input[start]=='b'||input[start-1]=='a'){
-        if(input[start+1]=='b'){
-            cout<<"here1"<<endl;
-            return checkAB(input,start+2,end);;
-        }else{
-            return false;
-        }
+        }   
+    }else if(1<=count&&input[0]=='b'){
+        if(input[1]=='b'&&(input[2]=='a'||input[2]=='\0'))
+        return checkAB(input+3);
     }else{
         return false;
     }
-     
+    
+
 }
 
-bool checkAB(char input[]) {
-	// Write your code here
-    int start = 0;
-    int i=0;
-    while(input[i]=='\0'){
-        i++;
-    }
-    checkAB(input,start,i-1);
-}
 
 int main(){
-    char check[] = "abbbabaaa";
+    char check[] = "abbabba";
     bool ans = checkAB(check);
     cout << ans;
     return 0;
