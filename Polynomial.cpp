@@ -97,6 +97,7 @@ class Polynomial{
     
         Polynomial newP1;
         newP1.capacity =(this->capacity+ p2.capacity);
+        newP1.degCoeff = new int[newP1.capacity];
         for(int i=0;i<newP1.capacity;i++){
             newP1.degCoeff[i] = 0;
         }
@@ -119,6 +120,8 @@ class Polynomial{
     // Complete the class
     
 };
+
+
 
 
 
